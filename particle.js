@@ -4,11 +4,12 @@ class Particle {
     this.v = createVector();
     this.acc = createVector();
     this.topspeed = 10;
+    this.dir = createVector();
   }
 
-  update(particle) {
-    let dir = p5.Vector.sub(particle.pos, this.pos);
-    this.acc = dir;
+  update(nextParticle) {
+    this.dir = p5.Vector.sub(nextParticle.pos, this.pos);
+    this.acc = this.dir;
     this.v.add(this.acc);
     this.v.limit(this.topspeed);
     this.pos.add(this.v);
@@ -18,9 +19,7 @@ class Particle {
     stroke(255);
     fill(255);
 
-    let dir = p5.Vector.sub(nextParticle.pos, this.pos);
-
-    if (abs(dir.x) < 15 && abs(dir.y) < 15) {
+    if (abs(this.dir.x) < 25 && abs(this.dir.y) < 25) {
       strokeWeight(5);
       this.drawLine(nextParticle);
     } else {
