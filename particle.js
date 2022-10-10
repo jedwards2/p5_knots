@@ -14,9 +14,22 @@ class Particle {
     this.pos.add(this.v);
   }
 
-  display() {
+  display(nextParticle) {
     stroke(255);
     fill(255);
-    ellipse(this.pos.x, this.pos.y, 5, 5);
+
+    let dir = p5.Vector.sub(nextParticle.pos, this.pos);
+
+    if (abs(dir.x) < 15 && abs(dir.y) < 15) {
+      strokeWeight(5);
+      this.drawLine(nextParticle);
+    } else {
+      strokeWeight(1);
+      ellipse(this.pos.x, this.pos.y, 1, 1);
+    }
+  }
+
+  drawLine(nextParticle) {
+    line(this.pos.x, this.pos.y, nextParticle.pos.x, nextParticle.pos.y);
   }
 }
