@@ -16,14 +16,9 @@ class Particle {
   }
 
   display(nextParticle) {
-    stroke(255);
-    fill(255);
-
     if (abs(this.dir.x) < 25 && abs(this.dir.y) < 25) {
-      strokeWeight(5);
       this.drawLine(nextParticle);
     } else {
-      strokeWeight(1);
       ellipse(this.pos.x, this.pos.y, 1, 1);
     }
   }

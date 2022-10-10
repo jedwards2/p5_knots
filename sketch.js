@@ -1,9 +1,9 @@
 let particles = [];
-const NUM_OF_PARTICLES = 250;
+const NUM_OF_PARTICLES = 200;
 
 function setup() {
   createCanvas(800, 800);
-
+  stroke(255, 50);
   for (let i = 0; i < NUM_OF_PARTICLES; i++) {
     particles[i] = new Particle();
   }
@@ -11,6 +11,7 @@ function setup() {
 
 function draw() {
   background(0);
+
   for (let i = 0; i < particles.length; i++) {
     let nextParticle;
     if (i == particles.length - 1) {
